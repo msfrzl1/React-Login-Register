@@ -24,7 +24,7 @@ const Navbar = () => {
           <ul className="navbar-nav">
             {listNavbar.map((item, index) => (
               <li className="nav-item" key={index}>
-                <Link to={"/home"} className="nav-link" aria-current="page">
+                <Link to={item.path} className="nav-link" aria-current="page">
                   {item.title}
                 </Link>
               </li>
