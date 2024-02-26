@@ -32,7 +32,7 @@ const Navbar = () => {
           </ul>
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <Link to={"/"} className="nav-link btn bg-primary text-white" aria-current="page">
+              <Link to={"/login"} className="nav-link btn bg-primary text-white" aria-current="page">
                 Login
               </Link>
             </li>
