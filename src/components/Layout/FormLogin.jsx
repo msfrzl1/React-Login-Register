@@ -1,12 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../Fragments/Navbar";
 import Input from "../Elements/Form/Input";
 import Label from "../Elements/Form/Label";
 import { useState } from "react";
+import axios from "axios";
 
 const FormLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [notif, setNotif] = useState("");
+
+  const navigate = useNavigate();
 
   const handleEmail = (e) => {
     console.log(e.target.value);
@@ -15,6 +19,31 @@ const FormLogin = () => {
   const handlePassword = (e) => {
     console.log(e.target.value);
     setPassword(e.target.value);
+  };
+
+  const handleLogin = () => {
+    const payload = {
+      email: email,
+      password: password,
+    };
+
+    axios
+      .post("https://reqres.in/api/login", payload)
+      .then((res) => {
+        console.log(res?.data?.token);
+        setNotif("Login Success");
+        const token = res?.data?.token;
+        localStorage.setItem("access_token", token);
+        setTimeout(() => {
+          if (token) {
+            navigate("/user");
+          }
+        }, 1000);
+      })
+      .catch((err) => {
+        console.log(err);
+        setNotif(err?.response?.data?.error);
+      });
   };
 
   return (
@@ -29,17 +58,21 @@ const FormLogin = () => {
           <Input type="email" name="email" id="email" placeholder="example123@gmail.com" onChange={handleEmail} />
           <Label htmlFor="password">Password</Label>
           <Input type="password" name="password" id="password" placeholder="********" onChange={handlePassword} />
-
-          {/* <Form label="Email" type="email" name="email" id="email" placeholder="example123@gmail.com" />
-          <Form label="Password" type="password" id="password" name="password" placeholder="********" /> */}
           <p>
             Dont have an account?{" "}
             <Link to="/register" className="text-decoration-none fw-bold">
               Register
             </Link>
           </p>
-          <button className="btn btn-primary w-100">Login</button>
-        </div>
+          <button className="btn btn-primary w-100" onClick={handleLogin}>
+            Login
+          </button>
+          {notif && (
+            <div className={`alert ${notif === "Login Success" ? "alert-success" : "alert-danger"} mt-3`} role="alert">
+              {notif}
+            </div>
+          )}
+        </div> 
       </div>
     </>
   );
