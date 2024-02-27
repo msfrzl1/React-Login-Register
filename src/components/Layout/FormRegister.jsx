@@ -12,14 +12,10 @@ const FormRegister = () => {
           <h1>Form Register</h1>
         </div>
         <div className="w-25 bg-white p-3 rounded shadow">
-          <Label htmlFor="fullName">Full Name</Label>
-          <Input type="name" name="name" id="name" placeholder="Full Name" />
-          <Label htmlFor="email">Username</Label>
+          <Label htmlFor="email">Email</Label>
           <Input type="email" name="email" id="email" placeholder="example123@gmail.com" />
           <Label htmlFor="password">Password</Label>
           <Input type="password" name="password" id="password" placeholder="********" />
-          <Label htmlFor="changePassword">Cange Password</Label>
-          <Input type="password" name="cangePassword" id="changePassword" placeholder="********" />
           <p>
             Alredy have an account?{" "}
             <Link to="/Login" className="text-decoration-none fw-bold">
