@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import Form from "../Elements/Form/Form";
 import Navbar from "../Fragments/Navbar";
+import Label from "../Elements/Form/Label";
+import Input from "../Elements/Form/Input";
 
 const FormRegister = () => {
   return (
@@ -11,10 +12,14 @@ const FormRegister = () => {
           <h1>Form Register</h1>
         </div>
         <div className="w-25 bg-white p-3 rounded shadow">
-          <Form label="Full Name" type="name" name="name" placeholder="Full Name" />
-          <Form label="Email" type="email" name="email" placeholder="example123@gmail.com" />
-          <Form label="Password" type="password" name="password" placeholder="********" />
-          <Form label="Confirm Password" type="password" name="confirmPassword" placeholder="********" />
+          <Label htmlFor="fullName">Full Name</Label>
+          <Input type="name" name="name" id="name" placeholder="Full Name" />
+          <Label htmlFor="email">Username</Label>
+          <Input type="email" name="email" id="email" placeholder="example123@gmail.com" />
+          <Label htmlFor="password">Password</Label>
+          <Input type="password" name="password" id="password" placeholder="********" />
+          <Label htmlFor="changePassword">Cange Password</Label>
+          <Input type="password" name="cangePassword" id="changePassword" placeholder="********" />
           <p>
             Alredy have an account?{" "}
             <Link to="/Login" className="text-decoration-none fw-bold">
