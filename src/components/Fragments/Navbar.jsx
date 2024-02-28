@@ -1,10 +1,20 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
   const listNavbar = [
     { path: "/home", title: "Home" },
     { path: "/user", title: "User" },
   ];
+
+  const access_token = localStorage.getItem("access_token");
+  console.log("token", access_token);
+
+  const logout = () => {
+    localStorage.removeItem("access_token");
+    navigate("/login");
+  };
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -30,11 +40,18 @@ const Navbar = () => {
               </li>
             ))}
           </ul>
+
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <Link to={"/login"} className="nav-link btn bg-primary text-white" aria-current="page">
-                Login
-              </Link>
+              {access_token ? (
+                <Link to={"/home"} className="nav-link btn bg-primary text-white" aria-current="page" onClick={logout}>
+                  Logout
+                </Link>
+              ) : (
+                <Link to={"/login"} className="nav-link btn bg-primary text-white" aria-current="page">
+                  Login
+                </Link>
+              )}
             </li>
           </ul>
         </div>
