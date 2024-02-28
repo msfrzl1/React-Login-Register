@@ -39,7 +39,6 @@ const FormRegister = () => {
         setTimeout(() => {
           navigate("/Login");
         }, 1000);
-        
       })
       .catch((err) => {
         setLoading(false);
@@ -53,9 +52,9 @@ const FormRegister = () => {
   return (
     <>
       <Navbar />
-      <div className="d-flex justify-content-center align-items-center flex-column w-100 vh-100 bg-primary">
+      <div className="d-flex justify-content-center align-items-center flex-column w-100 vh-100">
         <div className="mb-3 text-center text-white">
-          <h1>Form Register</h1>
+          <h1 className="fw-bold bg-black p-2 rounded">Form Register</h1>
         </div>
         <div className="w-25 bg-white p-3 rounded shadow">
           <Label htmlFor="email">Email</Label>

@@ -17,10 +17,10 @@ const UserPage = () => {
   }, []);
 
   return (
-    <div>
+    <div className="container-user text-white pb-5">
       <Navbar />
       <div className="d-flex justify-content-center py-5 fw-bold">
-        <h1>User Page</h1>
+        <h1 className="fw-bold bg-black p-2 rounded">User Page</h1>
       </div>
       <div className="row">
         {user.map((user) => (
