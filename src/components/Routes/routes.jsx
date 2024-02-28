@@ -2,6 +2,7 @@ import FormLogin from "../pages/FormLogin";
 import FormRegister from "../pages/FormRegister";
 import HomePage from "../pages/Home";
 import UserPage from "../pages/User";
+import ProtectedRoute from "./ProtectedRoute";
 
 export const routelist = [
   {
@@ -22,6 +23,10 @@ export const routelist = [
   },
   {
     path: "/user",
-    element: <UserPage />,
+    element: (
+      <ProtectedRoute>
+        <UserPage />
+      </ProtectedRoute>
+    ),
   },
 ];
