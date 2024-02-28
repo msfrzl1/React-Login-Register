@@ -54,11 +54,11 @@ const FormLogin = () => {
   return (
     <>
       <Navbar />
-      <div className="d-flex justify-content-center align-items-center flex-column w-100 vh-100">
+      <div className="container d-flex justify-content-center align-items-center flex-column w-100 vh-100">
         <div className="mb-3 text-center text-white">
-          <h1 className="fw-bold bg-black p-2 rounded">Form Login</h1>
+          <h1>Form Login</h1>
         </div>
-        <div className="w-25 bg-white p-3 rounded shadow">
+        <div className="w-75 bg-white p-3 rounded shadow">
           <Label htmlFor="email">Email</Label>
           <Input type="email" name="email" id="email" placeholder="example123@gmail.com" onChange={handleEmail} />
           <Label htmlFor="password">Password</Label>

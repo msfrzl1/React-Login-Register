@@ -56,7 +56,7 @@ const FormRegister = () => {
         <div className="mb-3 text-center text-white">
           <h1 className="fw-bold bg-black p-2 rounded">Form Register</h1>
         </div>
-        <div className="w-25 bg-white p-3 rounded shadow">
+        <div className="w-75 bg-white p-3 rounded shadow">
           <Label htmlFor="email">Email</Label>
           <Input type="email" name="email" id="email" placeholder="example123@gmail.com" value={email} onChange={handleEmail} />
           <Label htmlFor="password">Password</Label>
