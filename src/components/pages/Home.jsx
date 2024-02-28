@@ -1,10 +1,11 @@
+import ContentHome from "../Fragments/ContentHome";
 import Navbar from "../Fragments/Navbar";
 
 const HomePage = () => {
   return (
     <div>
       <Navbar />
-      <h1>Home Page</h1>
+      <ContentHome />
     </div>
   );
 };
