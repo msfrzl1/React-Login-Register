@@ -72,7 +72,7 @@ const FormLogin = () => {
               {notif}
             </div>
           )}
-        </div> 
+        </div>
       </div>
     </>
   );
