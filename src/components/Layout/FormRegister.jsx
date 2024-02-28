@@ -2,8 +2,20 @@ import { Link } from "react-router-dom";
 import Navbar from "../Fragments/Navbar";
 import Label from "../Elements/Form/Label";
 import Input from "../Elements/Form/Input";
+import { useState } from "react";
 
 const FormRegister = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleEmail = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handlePassword = (e) => {
+    setPassword(e.target.value);
+  };
+
   return (
     <>
       <Navbar />
@@ -13,9 +25,9 @@ const FormRegister = () => {
         </div>
         <div className="w-25 bg-white p-3 rounded shadow">
           <Label htmlFor="email">Email</Label>
-          <Input type="email" name="email" id="email" placeholder="example123@gmail.com" />
+          <Input type="email" name="email" id="email" placeholder="example123@gmail.com" onChange={handleEmail} />
           <Label htmlFor="password">Password</Label>
-          <Input type="password" name="password" id="password" placeholder="********" />
+          <Input type="password" name="password" id="password" placeholder="********" onChange={handlePassword} />
           <p>
             Alredy have an account?{" "}
             <Link to="/Login" className="text-decoration-none fw-bold">
