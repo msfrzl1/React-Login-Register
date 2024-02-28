@@ -9,6 +9,7 @@ const FormLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [notif, setNotif] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -27,9 +28,12 @@ const FormLogin = () => {
       password: password,
     };
 
+    setLoading(true);
+
     axios
       .post("https://reqres.in/api/login", payload)
       .then((res) => {
+        setLoading(false);
         console.log(res?.data?.token);
         setNotif("Login Success");
         const token = res?.data?.token;
@@ -38,9 +42,10 @@ const FormLogin = () => {
           if (token) {
             navigate("/user");
           }
-        }, 1000);
+        }, 2000);
       })
       .catch((err) => {
+        setLoading(false);
         console.log(err);
         setNotif(err?.response?.data?.error);
       });
@@ -65,7 +70,7 @@ const FormLogin = () => {
             </Link>
           </p>
           <button className="btn btn-primary w-100" onClick={handleLogin}>
-            Login
+            {loading ? "Loading..." : "Login"}
           </button>
           {notif && (
             <div className={`alert ${notif === "Login Success" ? "alert-success" : "alert-danger"} mt-3`} role="alert">
