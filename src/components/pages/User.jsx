@@ -18,7 +18,7 @@ const UserPage = () => {
   }, []);
 
   return (
-    <div className="container-user text-white pb-5">
+    <div className="text-white pb-5">
       <Navbar />
       <div className="d-flex justify-content-center py-5 fw-bold">
         <h1 className="fw-bold bg-black p-2 rounded">User Page</h1>
@@ -35,7 +35,7 @@ const UserPage = () => {
                   <h1>
                     {user.first_name} {user.last_name}
                   </h1>
-                  <Link to={`/`}>
+                  <Link to={`/user/${user.id}`}>
                     <button className="btn btn-primary btn-sm w-50 mt-3">Show Detail</button>
                   </Link>
                 </div>
