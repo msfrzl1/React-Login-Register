@@ -9,8 +9,14 @@ const UserPage = () => {
   const getUsers = () => {
     axios
       .get("https://reqres.in/api/users")
-      .then((res) => setUser(res?.data?.data))
-      .catch((err) => console.log(err));
+      .then((res) => {
+        console.log(res?.data?.data);
+        setUser(res?.data?.data);
+      })
+      .catch((err) => {
+        console.log(err?.message);
+        setUser(err?.message);
+      });
   };
 
   useEffect(() => {
