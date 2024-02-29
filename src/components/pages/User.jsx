@@ -25,12 +25,12 @@ const UserPage = () => {
     <div className="text-white pb-5">
       <Navbar />
       <div className="d-flex justify-content-center py-5 fw-bold">
-        <h1 className="fw-bold bg-black p-2 rounded">User Page</h1>
+        <h1 className="fw-bold p-2 rounded">User Page</h1>
       </div>
       <div className="row">
         {user.map((user) => (
           <div className="col-md-4 mb-3" key={user.id}>
-            <div className="card h-100">
+            <div className="card h-100 shadow">
               <div className="card-image">
                 <img src={user.avatar} alt="profile" />
               </div>

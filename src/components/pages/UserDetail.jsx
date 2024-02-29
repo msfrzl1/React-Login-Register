@@ -29,7 +29,7 @@ const UserDetail = () => {
       <div className="container mt-5">
         <div className="row justify-content-center">
           <div className="col-md-4 mb-3" key={users?.id}>
-            <div className="card">
+            <div className="card shadow">
               <div className="card-image">
                 <img src={users?.avatar} alt="profile" />
               </div>
