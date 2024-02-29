@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -9,14 +10,18 @@ const UserDetail = () => {
 
   const getUsersDetail = () => {
     axios
-      .get(`https://reqres.in/api/users/${id}`)
-      .then((res) => setUsers(res?.data?.data))
-      .catch((err) => setUsers(err));
+      .get(`htt://reqres.in/api/users/${id}`)
+      .then((res) => {
+        setUsers(res?.data?.data);
+      })
+      .catch((err) => {
+        setUsers(err?.message);
+      });
   };
 
   useEffect(() => {
     getUsersDetail();
-  });
+  }, [id]);
 
   return (
     <div className="text-white pb-5">
