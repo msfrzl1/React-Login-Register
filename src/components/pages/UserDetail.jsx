@@ -10,7 +10,7 @@ const UserDetail = () => {
 
   const getUsersDetail = () => {
     axios
-      .get(`htt://reqres.in/api/users/${id}`)
+      .get(`https://reqres.in/api/users/${id}`)
       .then((res) => {
         setUsers(res?.data?.data);
       })
