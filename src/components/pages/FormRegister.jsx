@@ -50,29 +50,40 @@ const FormRegister = () => {
   return (
     <>
       <Navbar />
-      <div className="d-flex justify-content-center align-items-center flex-column w-100 vh-100">
-        <div className="mb-3 text-center text-white">
-          <h1 className="fw-bold bg-black p-2 rounded">Form Register</h1>
-        </div>
-        <div className="w-75 bg-white p-3 rounded shadow">
-          <Label htmlFor="email">Email</Label>
-          <Input type="email" name="email" id="email" placeholder="example123@gmail.com" value={email} onChange={handleEmail} />
-          <Label htmlFor="password">Password</Label>
-          <Input type="password" name="password" id="password" placeholder="********" value={password} onChange={handlePassword} />
-          <p>
-            Alredy have an account?{" "}
-            <Link to="/Login" className="text-decoration-none fw-bold">
-              login
-            </Link>
-          </p>
-          <button className="btn btn-primary w-100" onClick={handleRegister}>
-            {loading ? "Loading..." : "Register"}
-          </button>
-          {notif && (
-            <div className={`alert ${notif === "Register Success" ? "alert-success" : "alert-danger"} mt-3`} role="alert">
-              {notif}
-            </div>
-          )}
+      <div className="container-login p-5 bg-light">
+        <div className="row g-0 rounded">
+          <div className="col-md-7">
+            <img src="/register.jpeg" className="img-fluid rounded-start" alt="Image Register" />
+          </div>
+          <div className="col-md-5 bg-white rounded-end shadow p-4 d-flex flex-column justify-content-center">
+            <form>
+              <h1 className="card-title text-center fw-bold">Form Register</h1>
+              <div className="mb-3">
+                <Label htmlFor="email">Email</Label>
+                <Input type="email" name="email" id="email" placeholder="example123@gmail.com" onChange={handleEmail} />
+              </div>
+              <div className="mb-3">
+                <Label htmlFor="password">Password</Label>
+                <Input type="password" name="password" id="password" placeholder="********" onChange={handlePassword} />
+              </div>
+              <div className="text-center">
+                <button className="btn btn-primary" onClick={handleRegister} disabled={loading}>
+                  {loading ? "Loading..." : "Register"}
+                </button>
+              </div>
+              <div className="text-center mt-3">
+                Alredy have an account?{" "}
+                <Link to="/login" className="text-decoration-none fw-bold">
+                  Login
+                </Link>
+              </div>
+              {notif && (
+                <div className={`alert ${notif === "Register Success" ? "alert-success" : "alert-danger"} mt-3`} role="alert">
+                  {notif}
+                </div>
+              )}
+            </form>
+          </div>
         </div>
       </div>
     </>
