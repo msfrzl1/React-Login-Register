@@ -8,7 +8,7 @@ const UserPage = () => {
 
   const getUsers = () => {
     axios
-      .get("https://reqres.in/api/users?page=2")
+      .get("https://reqres.in/api/users")
       .then((res) => setUser(res?.data?.data))
       .catch((err) => console.log(err));
   };
