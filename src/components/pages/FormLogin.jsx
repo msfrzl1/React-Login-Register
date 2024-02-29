@@ -50,29 +50,40 @@ const FormLogin = () => {
   return (
     <>
       <Navbar />
-      <div className="container d-flex justify-content-center align-items-center flex-column w-100 vh-100">
-        <div className="mb-3 text-center text-white">
-          <h1>Form Login</h1>
-        </div>
-        <div className="w-75 bg-white p-3 rounded shadow">
-          <Label htmlFor="email">Email</Label>
-          <Input type="email" name="email" id="email" placeholder="example123@gmail.com" onChange={handleEmail} />
-          <Label htmlFor="password">Password</Label>
-          <Input type="password" name="password" id="password" placeholder="********" onChange={handlePassword} />
-          <p>
-            Dont have an account?{" "}
-            <Link to="/register" className="text-decoration-none fw-bold">
-              Register
-            </Link>
-          </p>
-          <button className="btn btn-primary w-100" onClick={handleLogin}>
-            {loading ? "Loading..." : "Login"}
-          </button>
-          {notif && (
-            <div className={`alert ${notif === "Login Success" ? "alert-success" : "alert-danger"} mt-3`} role="alert">
-              {notif}
-            </div>
-          )}
+      <div className="container-login p-5 bg-light">
+        <div className="row g-0 rounded">
+          <div className="col-md-7">
+            <img src="/login.jpeg" className="img-fluid rounded-start" alt="Image Login" />
+          </div>
+          <div className="col-md-5 bg-white rounded-end shadow p-4 d-flex flex-column justify-content-center">
+            <form>
+              <h1 className="card-title text-center fw-bold">Form Login</h1>
+              <div className="mb-3">
+                <Label htmlFor="email">Email</Label>
+                <Input type="email" name="email" id="email" placeholder="example123@gmail.com" onChange={handleEmail} />
+              </div>
+              <div className="mb-3">
+                <Label htmlFor="password">Password</Label>
+                <Input type="password" name="password" id="password" placeholder="********" onChange={handlePassword} />
+              </div>
+              <div className="text-center">
+                <button className="btn btn-primary" onClick={handleLogin} disabled={loading}>
+                  {loading ? "Loading..." : "Login"}
+                </button>
+              </div>
+              <div className="text-center mt-3">
+                Dont have an account?{" "}
+                <Link to="/register" className="text-decoration-none fw-bold">
+                  Register
+                </Link>
+              </div>
+              {notif && (
+                <div className={`alert ${notif === "Login Success" ? "alert-success" : "alert-danger"} mt-3`} role="alert">
+                  {notif}
+                </div>
+              )}
+            </form>
+          </div>
         </div>
       </div>
     </>
