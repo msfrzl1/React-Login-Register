@@ -14,11 +14,9 @@ const FormLogin = () => {
   const navigate = useNavigate();
 
   const handleEmail = (e) => {
-    console.log(e.target.value);
     setEmail(e.target.value);
   };
   const handlePassword = (e) => {
-    console.log(e.target.value);
     setPassword(e.target.value);
   };
 
@@ -34,7 +32,6 @@ const FormLogin = () => {
       .post("https://reqres.in/api/login", payload)
       .then((res) => {
         setLoading(false);
-        console.log(res?.data?.token);
         setNotif("Login Success");
         const token = res?.data?.token;
         localStorage.setItem("access_token", token);
@@ -46,7 +43,6 @@ const FormLogin = () => {
       })
       .catch((err) => {
         setLoading(false);
-        console.log(err);
         setNotif(err?.response?.data?.error);
       });
   };

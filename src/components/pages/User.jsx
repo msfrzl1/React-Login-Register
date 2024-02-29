@@ -10,11 +10,9 @@ const UserPage = () => {
     axios
       .get("https://reqres.in/api/users")
       .then((res) => {
-        console.log(res?.data?.data);
         setUser(res?.data?.data);
       })
       .catch((err) => {
-        console.log(err?.message);
         setUser(err?.message);
       });
   };
