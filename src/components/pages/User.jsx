@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Navbar from "../Fragments/Navbar";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const UserPage = () => {
   const [user, setUser] = useState([]);
@@ -34,7 +35,9 @@ const UserPage = () => {
                   <h1>
                     {user.first_name} {user.last_name}
                   </h1>
-                  <p>{user.email}</p>
+                  <Link to={`/`}>
+                    <button className="btn btn-primary btn-sm w-50 mt-3">Show Detail</button>
+                  </Link>
                 </div>
               </div>
             </div>
