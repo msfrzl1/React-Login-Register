@@ -4,6 +4,7 @@ import Input from "../Elements/Form/Input";
 import Label from "../Elements/Form/Label";
 import { useState } from "react";
 import axios from "axios";
+import Title from "../Elements/Title/Title";
 
 const FormLogin = () => {
   const [email, setEmail] = useState("");
@@ -57,7 +58,7 @@ const FormLogin = () => {
           </div>
           <div className="col-md-5 bg-white rounded-end shadow p-4 d-flex flex-column justify-content-center">
             <form>
-              <h1 className="card-title text-center fw-bold">Form Login</h1>
+              <Title title="Login Page" />
               <div className="mb-3">
                 <Label htmlFor="email">Email</Label>
                 <Input type="email" name="email" id="email" placeholder="example123@gmail.com" onChange={handleEmail} />

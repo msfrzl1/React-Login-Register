@@ -4,6 +4,7 @@ import Label from "../Elements/Form/Label";
 import Input from "../Elements/Form/Input";
 import { useState } from "react";
 import axios from "axios";
+import Title from "../Elements/Title/Title";
 
 const FormRegister = () => {
   const [email, setEmail] = useState("");
@@ -57,7 +58,7 @@ const FormRegister = () => {
           </div>
           <div className="col-md-5 bg-white rounded-end shadow p-4 d-flex flex-column justify-content-center">
             <form>
-              <h1 className="card-title text-center fw-bold">Form Register</h1>
+              <Title title="Register Page" />
               <div className="mb-3">
                 <Label htmlFor="email">Email</Label>
                 <Input type="email" name="email" id="email" placeholder="example123@gmail.com" onChange={handleEmail} />

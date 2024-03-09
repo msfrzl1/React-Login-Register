@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import Navbar from "../Fragments/Navbar";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import Card from "../Elements/Card/Card";
+import Title from "../Elements/Title/Title";
 
 const UserPage = () => {
   const [user, setUser] = useState([]);
@@ -24,28 +25,10 @@ const UserPage = () => {
   return (
     <div className="text-white pb-5">
       <Navbar />
-      <div className="d-flex justify-content-center py-5 fw-bold">
-        <h1 className="fw-bold p-2 rounded">User Page</h1>
-      </div>
+      <Title title="User Page" />
       <div className="row">
         {user.map((user) => (
-          <div className="col-md-4 mb-3" key={user.id}>
-            <div className="card h-100 shadow">
-              <div className="card-image">
-                <img src={user.avatar} alt="profile" />
-              </div>
-              <div className="card-body">
-                <div className="card-title">
-                  <h1>
-                    {user.first_name} {user.last_name}
-                  </h1>
-                  <Link to={`/user/${user.id}`}>
-                    <button className="btn btn-primary btn-sm w-50 mt-3">Show Detail</button>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
+          <Card key={user?.id} src={user?.avatar} firstName={user?.first_name} lastName={user?.last_name} id={user?.id} />
         ))}
       </div>
     </div>
