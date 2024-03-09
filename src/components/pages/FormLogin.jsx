@@ -1,10 +1,10 @@
 import { Link, useNavigate } from "react-router-dom";
-import Navbar from "../Fragments/Navbar";
+import { useState } from "react";
+import { login } from "../../utils/api.js";
 import Input from "../Elements/Form/Input";
 import Label from "../Elements/Form/Label";
-import { useState } from "react";
-import axios from "axios";
 import Title from "../Elements/Title/Title";
+import Navbar from "../Fragments/Navbar";
 
 const FormLogin = () => {
   const [email, setEmail] = useState("");
@@ -21,31 +21,13 @@ const FormLogin = () => {
     setPassword(e.target.value);
   };
 
-  const handleLogin = () => {
+  const handleLogin = (e) => {
     const payload = {
       email: email,
       password: password,
     };
-
-    setLoading(true);
-
-    axios
-      .post("https://reqres.in/api/login", payload)
-      .then((res) => {
-        setLoading(false);
-        setNotif("Login Success");
-        const token = res?.data?.token;
-        localStorage.setItem("access_token", token);
-        setTimeout(() => {
-          if (token) {
-            navigate("/user");
-          }
-        }, 2000);
-      })
-      .catch((err) => {
-        setLoading(false);
-        setNotif(err?.response?.data?.error);
-      });
+    e.preventDefault();
+    login(payload, navigate, setLoading, setNotif);
   };
 
   return (
@@ -58,7 +40,7 @@ const FormLogin = () => {
           </div>
           <div className="col-md-5 bg-white rounded-end shadow p-4 d-flex flex-column justify-content-center">
             <form>
-              <Title title="Login Page" />
+              <Title title="Form Login" />
               <div className="mb-3">
                 <Label htmlFor="email">Email</Label>
                 <Input type="email" name="email" id="email" placeholder="example123@gmail.com" onChange={handleEmail} />
