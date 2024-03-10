@@ -3,8 +3,8 @@ import Navbar from "../Fragments/Navbar";
 import Label from "../Elements/Form/Label";
 import Input from "../Elements/Form/Input";
 import { useState } from "react";
-import axios from "axios";
 import Title from "../Elements/Title/Title";
+import { register } from "../../utils/api";
 
 const FormRegister = () => {
   const [email, setEmail] = useState("");
@@ -21,31 +21,13 @@ const FormRegister = () => {
     setPassword(e.target.value);
   };
 
-  const handleRegister = () => {
-    const data = {
+  const handleRegister = (e) => {
+    const payload = {
       email: email,
       password: password,
     };
-
-    setLoading(true);
-
-    axios
-      .post("https://reqres.in/api/register", data)
-      .then((res) => {
-        setLoading(false);
-        console.log(res);
-        setNotif("Register Success");
-        setTimeout(() => {
-          navigate("/Login");
-        }, 1000);
-      })
-      .catch((err) => {
-        setLoading(false);
-        setNotif(err?.response?.data?.error);
-      });
-
-    handleEmail("");
-    handlePassword("");
+    e.preventDefault();
+    register(payload, navigate, setLoading, setNotif);
   };
 
   return (
