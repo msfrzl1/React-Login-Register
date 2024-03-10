@@ -35,3 +35,12 @@ export const register = async (payload, navigate, setLoading, setNotif) => {
     setNotif(err?.response?.data?.error);
   }
 };
+
+export const getUser = async (setUser) => {
+  try {
+    const res = await axios.get("https://reqres.in/api/users");
+    setUser(res?.data?.data);
+  } catch (err) {
+    setUser(err?.message);
+  }
+};

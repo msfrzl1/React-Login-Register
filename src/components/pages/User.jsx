@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
+import { getUser } from "../../utils/api";
 import Navbar from "../Fragments/Navbar";
-import axios from "axios";
 import Card from "../Elements/Card/Card";
 import Title from "../Elements/Title/Title";
 
@@ -8,14 +8,7 @@ const UserPage = () => {
   const [user, setUser] = useState([]);
 
   const getUsers = () => {
-    axios
-      .get("https://reqres.in/api/users")
-      .then((res) => {
-        setUser(res?.data?.data);
-      })
-      .catch((err) => {
-        setUser(err?.message);
-      });
+    getUser(setUser);
   };
 
   useEffect(() => {
