@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Navbar from "../Fragments/Navbar";
-import Title from "../Elements/Title/Title";
 
 const UserDetail = () => {
   const [users, setUsers] = useState({});
@@ -27,7 +26,9 @@ const UserDetail = () => {
   return (
     <div className="text-white pb-5">
       <Navbar />
-      <Title title="User Detail Page" />
+      <div>
+        <h1>User Detail</h1>
+      </div>
       <div className="container mt-5">
         <div className="row justify-content-center">
           <div className="col-md-4 mb-3" key={users?.id}>
